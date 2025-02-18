@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "author": "Graziele Coelho",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -3.25,
+      "left": 32.35,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 111.8,
+      "left": -115.2,
+      "attrs": { "color": "green", "bounce": "1" }
+    },
+    { "type": "wokwi-gnd", "id": "gnd6", "top": 259.2, "left": 172.2, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 550.34,
+      "left": -66.97,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc6", "top": 471.16, "left": 9.6, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd7", "top": 518.4, "left": -58.2, "attrs": {} },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb26",
+      "top": 196,
+      "left": -190.9,
+      "attrs": { "common": "cathode" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 312,
+      "left": -211.75,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 312,
+      "left": -192.55,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 312,
+      "left": -182.95,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joystick1",
+      "top": -163.8,
+      "left": 197.4,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "pico:GP5", "btn2:1.l", "green", [ "h-19.2", "v19.2", "h-134.4" ] ],
+    [ "gnd6:GND", "btn2:2.l", "black", [ "h-240", "v-9.6", "h-57.6" ] ],
+    [ "oled1:VCC", "vcc6:VCC", "red", [ "v0" ] ],
+    [ "oled1:GND", "gnd7:GND", "black", [ "v-38.4", "h-57.6" ] ],
+    [ "pico:GP15", "oled1:SCL", "cyan", [ "h-19.2", "v240.04", "h-29.1" ] ],
+    [ "pico:GP14", "oled1:SDA", "yellow", [ "v336.04", "h-38.47" ] ],
+    [ "rgb26:COM", "gnd6:GND", "black", [ "v0" ] ],
+    [ "rgb26:B", "r3:1", "blue", [ "v0" ] ],
+    [ "pico:GP12", "r3:2", "blue", [ "h-38.4", "v211.24", "h-153.6" ] ],
+    [ "rgb26:G", "r2:1", "green", [ "v0" ] ],
+    [ "r2:2", "pico:GP11", "green", [ "v27.6", "h153.6", "v-230.4" ] ],
+    [ "rgb26:R", "r1:1", "red", [ "v0" ] ],
+    [ "r1:2", "pico:GP13", "red", [ "v46.8", "h192", "v-230.44" ] ],
+    [ "joystick1:GND", "gnd6:GND", "black", [ "v249.6", "h9.6" ] ],
+    [ "pico:3V3", "joystick1:VCC", "red", [ "h19.51", "v-48", "h105.6" ] ],
+    [ "pico:GP22", "joystick1:SEL", "orange", [ "h19.51", "v345.6", "h96" ] ],
+    [ "joystick1:VERT", "pico:GP27", "#8f4814", [ "v76.8", "h-28.8", "v-403.2" ] ],
+    [ "joystick1:HORZ", "pico:GP26", "violet", [ "v297.6", "h259.2", "v-220.8" ] ]
+  ],
+  "dependencies": {}
+}
