@@ -43,7 +43,7 @@ add_executable(embarcatech-u4-c8-tarefa10
     lib/joystick.c
 )
 
-pico_set_program_name(embarcatech-u4-c8-tarefa10 "embarcatech-u4-c8-tarefa1")
+pico_set_program_name(embarcatech-u4-c8-tarefa10 "embarcatech-u4-c8-tarefa10")
 pico_set_program_version(embarcatech-u4-c8-tarefa10 "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
